@@ -76,7 +76,7 @@ If `true`, `'use strict';` is prepended to the beginning of the file.
 Type: `string`  
 Default: `strict`  
 
-Wrap the templateCache in a module system.
+Wrap the templateCache in a module system.  
 Currently supported systems: `RequireJS`, `Browserify` and `IIFE` (Immediately-Invoked Function Expression).
 
 #### options.beautify
