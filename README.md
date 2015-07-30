@@ -151,7 +151,7 @@ See supported options and defaults [here](https://www.npmjs.com/package/js-beaut
 
 #### options.templateHeader
 
-Type: `string`,  
+Type: `string`  
 Default: `'angular.module(\'<%= name %>\'<%= standalone %>)'`  
 
 A [lodash template](https://lodash.com/docs#template) for the fileHeader.
@@ -161,14 +161,14 @@ A [lodash template](https://lodash.com/docs#template) for the fileHeader.
 
 #### options.templateFooter
 
-Type: `string`,  
+Type: `string`  
 Default: `';'`  
 
 A [lodash template](https://lodash.com/docs#template) for the file's footer.
 
 #### options.templateBody
 
-Type: `string`,  
+Type: `string`  
 Default: `'.constant(\'<%= key %>\', <%= value %>)'`  
 
 A [lodash template](https://lodash.com/docs#template) populated repeatedly with the result of each successful request.
@@ -178,7 +178,7 @@ A [lodash template](https://lodash.com/docs#template) populated repeatedly with 
 
 #### options.logLevel
 
-Type: `string`,  
+Type: `string`  
 Default: `normal`  
 
 The granularity of messages logged to the console.
