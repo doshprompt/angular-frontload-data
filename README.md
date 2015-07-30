@@ -120,3 +120,7 @@ Type: `string`,
 Default: `normal`  
 
 The granularity of messages logged to the console.
+
+## License
+
+MIT © Rahul Doshi
