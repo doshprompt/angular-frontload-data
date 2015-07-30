@@ -116,7 +116,7 @@ A [lodash template](https://lodash.com/docs#template) populated repeatedly with 
 
 #### options.logLevel
 
-Type: `string`,
+Type: `string`,  
 Default: `normal`  
 
 The granularity of messages logged to the console.
