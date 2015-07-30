@@ -28,6 +28,44 @@ frontLoad({
 });
 ```
 
+### Full Example
+
+#### gulpfile.js
+
+```js
+var gulp = require('gulp');
+var frontLoad = require('angular-frontload-data');
+
+gulp.task('frontload', function(done) {
+  frontLoad({
+    example: {
+      url: 'http://www.test.com/example.json',
+      method: 'GET'
+    }, {
+      filename: 'example.js',
+      moduleName: 'example'
+    }, done
+  });
+});
+```
+
+#### Sample Result
+
+*example.js* (beautified)
+
+```js
+angular.module('example')
+  .constant('example', {
+    hai: 'hello world!',
+    bai: 'kthx'
+  });
+```
+
+Include this file in your app and AngularJS will automatically inject all of its constants before anything else.
+
+__Note:__ this plugin will not create a new AngularJS module by default, but use a module called templates.
+If you would like to create a new module, set [options.moduleDeclaration](#options.moduledeclaration) to `true`.
+
 ### Hack nice with Grunt
 
 ```js
@@ -47,7 +85,7 @@ module.exports = function (grunt) {
       }, done
     });
   });
-}
+};
 ```
 
 ## API
