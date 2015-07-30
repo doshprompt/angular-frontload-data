@@ -2,6 +2,8 @@
 
 > Bundle your mostly immutable remote data into angular constant(s) at build-time.
 
+Outputs a minified version of the file by default.
+
 ## Install
 
 ```sh
@@ -59,7 +61,7 @@ Type: `object`
 
 A map of [Request](https://www.npmjs.com/package/request) objects
 [plus some additional options](https://www.npmjs.com/package/request#request-options-callback).  
-See: https://www.npmjs.com/package/request#request-options-callback for more info
+See [this page](https://www.npmjs.com/package/request#request-options-callback) for a list of all available options.  
 
 #### options
 
