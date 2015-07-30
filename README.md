@@ -26,6 +26,28 @@ frontLoad({
 });
 ```
 
+### Hack nice with Grunt
+
+```js
+module.exports = function (grunt) {
+  var frontLoad = require('angular-frontload-data');
+
+  grunt.registerTask('frontload', function() {
+    var done = this.async();
+
+    frontLoad({
+      example: {
+        url: 'http://www.test.com/example.json',
+        method: 'GET'
+      }, {
+        filename: 'example.js',
+        moduleName: 'example'
+      }, done
+    });
+  });
+}
+```
+
 ## API
 
 ### frontLoad(constants, [options], [callback]);
