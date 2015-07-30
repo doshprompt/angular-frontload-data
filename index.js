@@ -8,6 +8,7 @@ var fs = require('fs'),
     colors = require('chalk'),
     symbols = require('log-symbols'),
     beep = require('beepbeep'),
+    noop = require('node-noop').noop,
 
     TEMPLATE_HEADER = 'angular.module(\'<%= name %>\'<%= standalone %>)',
     TEMPLATE_BODY = '.constant(\'<%= key %>\', <%= value %>)',
@@ -43,13 +44,13 @@ function formatUri(href) {
     return uri;
 }
 
-module.exports = function(options, cb) {
+module.exports = function(constants, options, callback) {
     var requests = [],
         consts = [],
         errors = 0,
-        logging = util.isString(options.logLevel) && options.logLevel.trim().toLowerCase() || 'default',
+        cb = (options && util.isFunction(options)) || (callback && util.isFunction(callback)) || noop,
+        logging = util.isString(options.logLevel) && options.logLevel.trim().toLowerCase() || 'normal',
         pretty = options.beautify,
-        constants = options.constants,
         system = util.isString(options.moduleSystem) && options.moduleSystem.trim().toLowerCase()
             || options.strictMode ? 'strict' : '',
         header = (system ? (MODULE_WRAPPERS[system] && MODULE_WRAPPERS[system].header) || '' : '')
