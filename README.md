@@ -143,10 +143,10 @@ Currently supported systems: `RequireJS`, `Browserify` and `IIFE` (Immediately-I
 
 #### options.beautify
 
-Type: `boolean`, `object`  
-Default: `false`  
+Type: `boolean`, `object`, `string`
+Default: `true`  
 
-A [JS Beuatifier](http://jsbeautifier.org/) config object.  
+[JS Beautifier](http://jsbeautifier.org/) configurations. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.
 See supported options and defaults [here](https://www.npmjs.com/package/js-beautify#options)
 
 #### options.templateHeader
