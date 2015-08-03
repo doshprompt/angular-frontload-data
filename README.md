@@ -2,7 +2,7 @@
 
 > Bundle your mostly immutable remote data into angular constant(s) at build-time.
 
-It outputs a minified version of the file by default.
+It outputs a non-minified (prettified) version of the file by default, unless explicitly turned off.
 
 ## Install
 
