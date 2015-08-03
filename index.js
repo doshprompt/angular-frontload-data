@@ -51,7 +51,8 @@ module.exports = function(constants, options, callback) {
         cb = (util.isFunction(options) && options) || (util.isFunction(callback) && callback) || noop,
         logging = util.isString(options.logLevel) && options.logLevel.trim().toLowerCase() || 'normal',
         pretty = (options.beautify !== false) && (options.beautify || true),
-        quotemarks = require(options.quoteMark === 'double' ? 'to-double-quotes' : 'to-single-quotes'),
+        quotemarks = require(options.quoteMark && options.quoteMark.trim().toLowerCase() === 'double'
+            ? 'to-double-quotes' : 'to-single-quotes'),
         config = util.isString(pretty) ? JSON.parse(fs.readFileSync(pretty)) : pretty,
         system = util.isString(options.moduleSystem) && options.moduleSystem.trim().toLowerCase()
             || options.strictMode ? 'strict' : '',
