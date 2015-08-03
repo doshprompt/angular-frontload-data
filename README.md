@@ -151,7 +151,7 @@ Default: `true`
 [JS Beautifier](http://jsbeautifier.org/) configuration. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.
 See supported options and defaults [here](https://www.npmjs.com/package/js-beautify#options)
 
-#### options.beautify
+#### options.quoteMark
 
 Type: `string`  
 Default: `"single"`
