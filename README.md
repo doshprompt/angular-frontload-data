@@ -169,7 +169,7 @@ A [lodash template](https://lodash.com/docs#template) for the file's footer.
 #### options.templateBody
 
 Type: `string`  
-Default: `".constant(\'<%= key %>\', <%= value %>)"`  
+Default: `".constant('<%= key %>', <%= value %>)"`  
 
 A [lodash template](https://lodash.com/docs#template) populated repeatedly with the result of each successful request.
 
