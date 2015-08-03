@@ -51,6 +51,7 @@ module.exports = function(constants, options, callback) {
         cb = (util.isFunction(options) && options) || (util.isFunction(callback) && callback) || noop,
         logging = util.isString(options.logLevel) && options.logLevel.trim().toLowerCase() || 'normal',
         pretty = (options.beautify !== false) && (options.beautify || true),
+        quotemarks = require(options.quoteMark === 'double' ? 'to-double-quotes' : 'to-single-quotes'),
         config = util.isString(pretty) ? JSON.parse(fs.readFileSync(pretty)) : pretty,
         system = util.isString(options.moduleSystem) && options.moduleSystem.trim().toLowerCase()
             || options.strictMode ? 'strict' : '',
@@ -110,7 +111,7 @@ module.exports = function(constants, options, callback) {
         content += footer;
 
         if (!(errors && options.allOrNothing)) {
-            fs.writeFile(options.filename || DEFAULT_FILE, pretty ? beautify(content, config) : content, function(err) {
+            fs.writeFile(options.filename || DEFAULT_FILE, quotemarks(pretty ? beautify(content, config) : content), function(err) {
                 if (err) {
                     throw err;
                 }

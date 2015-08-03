@@ -1,7 +1,9 @@
 # angular-frontload-data
 
-> Bundle your mostly immutable remote data into angular constant(s) at build-time.
+> Bundle your mostly immutable remote data sources into angular constant(s) at build-time.
 
+Basically allows your app to pre-load dynamic constant data at runtime,
+avoiding any race conditions during the bootstrap phase.  
 It outputs a non-minified (prettified) version of the file by default, unless explicitly turned off.
 
 ## Install
@@ -148,6 +150,14 @@ Default: `true`
 
 [JS Beautifier](http://jsbeautifier.org/) configuration. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.
 See supported options and defaults [here](https://www.npmjs.com/package/js-beautify#options)
+
+#### options.beautify
+
+Type: `string`  
+Default: `"single"`
+
+Quotation marks to be used when wrapping strings.  
+Accepted values: `"single"`, `"double"`
 
 #### options.templateHeader
 
