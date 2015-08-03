@@ -51,9 +51,7 @@ gulp.task('frontload', function(done) {
 });
 ```
 
-#### Sample Result
-
-*example.js* (beautified)
+#### Sample Result Output - example.js
 
 ```js
 angular.module('example')
@@ -148,7 +146,7 @@ Currently supported systems: `RequireJS`, `Browserify` and `IIFE` (Immediately-I
 Type: `boolean`, `object`, `string`
 Default: `true`  
 
-[JS Beautifier](http://jsbeautifier.org/) configuration. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.
+[JS Beautifier](http://jsbeautifier.org/) configuration. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.  
 See supported options and defaults [here](https://www.npmjs.com/package/js-beautify#options)
 
 #### options.quoteMark
@@ -184,7 +182,7 @@ Default: `".constant('<%= key %>', <%= value %>)"`
 A [lodash template](https://lodash.com/docs#template) populated repeatedly with the result of each successful request.
 
 - key: `Object.keys(constants).forEach`
-- value: {transformed} response of each request made
+- value: *{transformed}* response of each request made
 
 #### options.logLevel
 
