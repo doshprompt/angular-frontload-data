@@ -108,14 +108,14 @@ Type: `object`
 #### options.filename
 
 Type: `string`  
-Default: `./constants.js`
+Default: `"./constants.js"`
 
 The output filename.
 
 #### options.moduleName
 
 Type: `string`  
-Default: `constants`
+Default: `"constants"`
 
 The [angular.module](https://docs.angularjs.org/api/ng/function/angular.module) to which the data is attached.
 
@@ -146,13 +146,13 @@ Currently supported systems: `RequireJS`, `Browserify` and `IIFE` (Immediately-I
 Type: `boolean`, `object`, `string`
 Default: `true`  
 
-[JS Beautifier](http://jsbeautifier.org/) configurations. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.
+[JS Beautifier](http://jsbeautifier.org/) configuration. Boolean or Object is passed directly to the js-beautifier. String value is assumed to be the path to a configuration file.
 See supported options and defaults [here](https://www.npmjs.com/package/js-beautify#options)
 
 #### options.templateHeader
 
 Type: `string`  
-Default: `'angular.module(\'<%= name %>\'<%= standalone %>)'`  
+Default: `"angular.module('<%= name %>'<%= standalone %>)"`  
 
 A [lodash template](https://lodash.com/docs#template) for the fileHeader.
 
@@ -162,14 +162,14 @@ A [lodash template](https://lodash.com/docs#template) for the fileHeader.
 #### options.templateFooter
 
 Type: `string`  
-Default: `';'`  
+Default: `";"`  
 
 A [lodash template](https://lodash.com/docs#template) for the file's footer.
 
 #### options.templateBody
 
 Type: `string`  
-Default: `'.constant(\'<%= key %>\', <%= value %>)'`  
+Default: `".constant(\'<%= key %>\', <%= value %>)"`  
 
 A [lodash template](https://lodash.com/docs#template) populated repeatedly with the result of each successful request.
 
@@ -179,7 +179,7 @@ A [lodash template](https://lodash.com/docs#template) populated repeatedly with 
 #### options.logLevel
 
 Type: `string`  
-Default: `normal`  
+Default: `"normal"`  
 
 The granularity of messages logged to the console.
 

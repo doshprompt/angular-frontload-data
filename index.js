@@ -51,7 +51,7 @@ module.exports = function(constants, options, callback) {
         cb = (util.isFunction(options) && options) || (util.isFunction(callback) && callback) || noop,
         logging = util.isString(options.logLevel) && options.logLevel.trim().toLowerCase() || 'normal',
         pretty = (options.beautify !== false) && (options.beautify || true),
-        beautifyConfig = util.isString(pretty) ? JSON.parse(fs.readFileSync(pretty)) : pretty,
+        config = util.isString(pretty) ? JSON.parse(fs.readFileSync(pretty)) : pretty,
         system = util.isString(options.moduleSystem) && options.moduleSystem.trim().toLowerCase()
             || options.strictMode ? 'strict' : '',
         header = (system ? (MODULE_WRAPPERS[system] && MODULE_WRAPPERS[system].header) || '' : '')
@@ -80,10 +80,10 @@ module.exports = function(constants, options, callback) {
         requests.push(request(constants[constant]));
     });
 
-    console.log();
-
     Promise.settle(requests).then(function(results) {
         var error;
+
+        console.log();
 
         results.forEach(function(result, i) {
             if (result.isFulfilled()) {
@@ -110,7 +110,7 @@ module.exports = function(constants, options, callback) {
         content += footer;
 
         if (!(errors && options.allOrNothing)) {
-            fs.writeFile(options.filename || DEFAULT_FILE, pretty ? beautify(content, beautifyConfig) : content, function(err) {
+            fs.writeFile(options.filename || DEFAULT_FILE, pretty ? beautify(content, config) : content, function(err) {
                 if (err) {
                     throw err;
                 }
