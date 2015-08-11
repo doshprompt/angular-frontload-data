@@ -9,6 +9,7 @@ var fs = require('fs'),
     symbols = require('log-symbols'),
     beep = require('beepbeep'),
     noop = require('node-noop').noop,
+    sourcify = require('tosource'),
 
     TEMPLATE_HEADER = 'angular.module(\'<%= name %>\'<%= standalone %>)',
     TEMPLATE_BODY = '.constant(\'<%= key %>\', <%= value %>)',
@@ -91,7 +92,7 @@ module.exports = function(constants, options, callback) {
             if (result.isFulfilled()) {
                 content += template(options.templateBody || TEMPLATE_BODY)({
                     key: consts[i],
-                    value: result.value()
+                    value: sourcify(result.value())
                 });
 
                 console.log(colors.green(symbols.success, requests[i].response.request.uri.href));
