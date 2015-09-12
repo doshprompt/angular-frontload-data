@@ -21,12 +21,12 @@ frontLoad({
   example: {
     url: 'http://www.test.com/example.json',
     method: 'GET'
-  }, {
-    filename: 'example.js',
-    moduleName: 'example'
-  }, function() {
-    console.log('Done!');
-  });
+  }
+}, {
+  filename: 'example.js',
+  moduleName: 'example'
+}, function() {
+  console.log('Done!');
 });
 ```
 
@@ -39,15 +39,37 @@ var gulp = require('gulp');
 var frontLoad = require('angular-frontload-data');
 
 gulp.task('frontload', function(done) {
+
   frontLoad({
     example: {
+      // Request URL: http://www.test.com/example.json?p1=value1&p2=3
       url: 'http://www.test.com/example.json',
-      method: 'GET'
-    }, {
-      filename: 'example.js',
-      moduleName: 'example'
-    }, done
-  });
+      method: 'GET',
+      qs: {
+        p1: 'value1',
+        p2: '3'
+      },
+      transform: function (data) {
+        return JSON.parse(data);
+      }
+    },
+    example2: {
+      // Request URL: http://www.test.com/example2.json?q1=asdf&games=soccer
+      url: 'http://www.test.com/example2.json',
+      method: 'GET',
+      qs: {
+        q1: 'asdf',
+        games: 'soccer'
+      },
+      transform: function (data) {
+        return JSON.parse(data);
+      }
+    }
+  }, {
+    filename: 'example.js',
+    moduleName: 'example',
+    beautify: '.jsbeautifyrc'
+  }, done);
 });
 ```
 
@@ -79,11 +101,11 @@ module.exports = function (grunt) {
       example: {
         url: 'http://www.test.com/example.json',
         method: 'GET'
-      }, {
-        filename: 'example.js',
-        moduleName: 'example'
-      }, done
-    });
+      }
+    }, {
+      filename: 'example.js',
+      moduleName: 'example'
+    }, done);
   });
 };
 ```
@@ -97,9 +119,7 @@ module.exports = function (grunt) {
 **Required**  
 Type: `object`
 
-A map of [Request](https://www.npmjs.com/package/request) objects
-[plus some additional options](https://www.npmjs.com/package/request#request-options-callback).  
-See [this page](https://www.npmjs.com/package/request#request-options-callback) for a list of all available options.  
+A map of [Request-Promise](https://www.npmjs.com/package/request-promise) objects. Under the hood, Request-Promise uses the [Request](https://www.npmjs.com/package/request) API, so see [this page](https://www.npmjs.com/package/request#request-options-callback) for a list of all available options.  
 
 #### options
 
