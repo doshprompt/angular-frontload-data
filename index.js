@@ -1,5 +1,6 @@
 var fs = require('fs'),
     util = require('util'),
+    path = require('path'),
 
     Promise = require('bluebird'),
     request = require('request-promise'),
@@ -61,6 +62,7 @@ module.exports = function(constants, options, callback) {
             + ((util.isString(options.templateHeader) && options.templateHeader) || TEMPLATE_HEADER),
         footer = ((util.isString(options.templateFooter) && options.templateFooter) || TEMPLATE_FOOTER)
             + (system ? (MODULE_WRAPPERS[system] && MODULE_WRAPPERS[system].footer) || '' : ''),
+        filename = options.filename || DEFAULT_FILE,
         content = template(header)({
             name: options.moduleName || DEFAULT_MODULE,
             standalone: options.moduleDeclaration ? ', []' : ''
@@ -113,12 +115,14 @@ module.exports = function(constants, options, callback) {
         content += footer;
 
         if (!(errors && options.allOrNothing)) {
-            fs.writeFile(options.filename || DEFAULT_FILE, quotemarks(pretty ? beautify(content, config) : content), function(err) {
-                if (err) {
-                    throw err;
-                }
+            fs.mkdir(path.dirname(filename), function () {
+                fs.writeFile(filename, quotemarks(pretty ? beautify(content, config) : content), function(err) {
+                    if (err) {
+                        throw err;
+                    }
 
-                cb();
+                    cb();
+                });
             });
         }
 
