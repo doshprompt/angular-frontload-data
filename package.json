@@ -1,6 +1,6 @@
 {
   "name": "angular-frontload-data",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Bundle your mostly immutable remote data into angular constant(s) at build-time",
   "main": "index.js",
   "scripts": {
