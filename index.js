@@ -1,6 +1,7 @@
 var fs = require('fs'),
     util = require('util'),
     path = require('path'),
+    mkdirp = require('mkdirp'),
 
     Promise = require('bluebird'),
     request = require('request-promise'),
@@ -115,7 +116,7 @@ module.exports = function(constants, options, callback) {
         content += footer;
 
         if (!(errors && options.allOrNothing)) {
-            fs.mkdir(path.dirname(filename), function () {
+            mkdirp(path.dirname(filename), function () {
                 fs.writeFile(filename, quotemarks(pretty ? beautify(content, config) : content), function(err) {
                     if (err) {
                         throw err;

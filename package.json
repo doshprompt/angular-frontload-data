@@ -26,6 +26,7 @@
     "js-beautify": "^1.5.10",
     "lodash.template": "^3.6.2",
     "log-symbols": "^1.0.2",
+    "mkdirp": "^0.5.1",
     "node-noop": "0.0.1",
     "request-promise": "^0.4.3",
     "to-double-quotes": "^1.0.1",
